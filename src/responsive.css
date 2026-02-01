@@ -1,0 +1,69 @@
+/* Global Responsive Adjustments */
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+        /* Force smaller H1 on mobile */
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+}
+
+/* Flexbox utilities for wrapping */
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse !important;
+}
+
+/* Service Cards Mobile Optimization */
+@media (max-width: 640px) {
+    .grid-services {
+        grid-template-columns: 1fr;
+        /* Stack cards 1 column on small screens */
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* About & Content Page Specifics */
+@media (max-width: 900px) {
+    .flex-between {
+        flex-wrap: wrap;
+        /* Ensure split layouts wrap */
+    }
+
+    /* Make side-by-side content stack */
+    .section>div[style*="display: flex"] {
+        flex-direction: column;
+    }
+
+    .section>div[style*="flex: 1 1"] {
+        width: 100%;
+        flex: auto;
+    }
+
+    /* Fix image widths in stacked layouts */
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Navbar Tweaks */
+@media (max-width: 380px) {
+    .logo-link img {
+        height: 40px;
+        /* Smaller logo on very small screens */
+    }
+}
