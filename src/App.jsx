@@ -30,7 +30,7 @@ function App() {
 
     return (
         <LanguageProvider>
-            <Router basename={import.meta.env.BASE_URL}>
+            <Router>
                 <div className="app-layout">
                     <Navbar theme={theme} toggleTheme={toggleTheme} />
                     <main style={{ minHeight: '80vh' }}>
