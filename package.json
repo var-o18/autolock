@@ -7,16 +7,21 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "scrape-fb": "node scripts/scrape-fb.js",
+    "schedule-fb": "node scripts/scheduler-fb.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.2",
     "lucide-react": "^0.563.0",
+    "nodemailer": "^8.0.1",
+    "puppeteer": "^24.37.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^7.13.0",
+    "resend": "^6.9.3",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

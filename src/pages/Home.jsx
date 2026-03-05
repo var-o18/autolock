@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import RecentWork from '../components/RecentWork';
 
 const ServiceCard = ({ icon: Icon, title, desc, link, btnText }) => (
     <div className="service-card">
@@ -149,22 +150,8 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Recent Work / Gallery Preview - NEW SECTION */}
-            <section className="section" style={{ backgroundColor: '#111827', color: 'white' }}>
-                <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>{t.gallery.title}</h2>
-                        <p style={{ color: '#D1D5DB' }}>{t.gallery.desc}</p>
-                    </div>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
-                        <img src="/images/picture-1200.png" alt="Recent Work 1" style={{ width: '100%', borderRadius: '0.5rem', height: '250px', objectFit: 'cover' }} />
-                        <img src="/images/key cut.jpg" alt="Key Cutting" style={{ width: '100%', borderRadius: '0.5rem', height: '250px', objectFit: 'cover' }} />
-                        <img src="/images/front side.jpg" alt="Mobile Van" style={{ width: '100%', borderRadius: '0.5rem', height: '250px', objectFit: 'cover' }} />
-                        <img src="/images/picture-2600.jfif" alt="Car Key" style={{ width: '100%', borderRadius: '0.5rem', height: '250px', objectFit: 'cover' }} />
-                    </div>
-                </div>
-            </section>
+            {/* Recent Work / Facebook Feed */}
+            <RecentWork />
 
             {/* Coverage & Map */}
             <section className="section">

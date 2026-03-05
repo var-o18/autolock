@@ -1,8 +1,35 @@
+import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Mail, Phone, Clock, Calendar } from 'lucide-react';
 
 const Contact = () => {
     const { t } = useLanguage();
+    const [status, setStatus] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus(t.contact?.sending || 'Enviando...'); // Fallback message
+        
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            
+            if (response.ok) {
+                setStatus('¡Mensaje enviado con éxito!');
+                e.target.reset();
+            } else {
+                setStatus('Hubo un error al enviar el mensaje.');
+            }
+        } catch (error) {
+            setStatus('Error de red al intentar enviar.');
+        }
+    };
 
     const inputStyle = {
         padding: '0.75rem',
@@ -31,36 +58,44 @@ const Contact = () => {
 
             {/* General Form */}
             <div style={{ maxWidth: '800px', margin: '0 auto 4rem', padding: '2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-                <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    {/* HONEYPOT ANTI-SPAM (Oculto para el usuario normal) */}
+                    <input type="text" name="botcheck" style={{ display: 'none' }} />
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                         <div>
-                            <label style={labelStyle}>{t.contact.form1.firstName}</label>
-                            <input type="text" style={inputStyle} />
+                            <label style={labelStyle}>{t.contact.form1.firstName} *</label>
+                            <input type="text" name="nombre" required style={inputStyle} />
                         </div>
                         <div>
                             <label style={labelStyle}>{t.contact.form1.lastName}</label>
-                            <input type="text" style={inputStyle} />
+                            <input type="text" name="apellido" style={inputStyle} />
                         </div>
                     </div>
 
                     <div>
-                        <label style={labelStyle}>{t.contact.form1.email}</label>
-                        <input type="email" style={inputStyle} />
+                        <label style={labelStyle}>{t.contact.form1.email} *</label>
+                        <input type="email" name="email" required style={inputStyle} />
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form1.phone}</label>
-                        <input type="tel" style={inputStyle} />
+                        <input type="tel" name="telefono" style={inputStyle} />
                     </div>
 
                     <div>
-                        <label style={labelStyle}>{t.contact.form1.message}</label>
-                        <textarea rows="5" style={inputStyle}></textarea>
+                        <label style={labelStyle}>{t.contact.form1.message} *</label>
+                        <textarea name="mensaje" rows="5" required style={inputStyle}></textarea>
                     </div>
 
                     <div style={{ textAlign: 'right' }}>
-                        <button className="btn btn-primary">{t.contact.form1.submit}</button>
+                        <button type="submit" className="btn btn-primary">{t.contact.form1.submit}</button>
                     </div>
+                    {status && (
+                        <div style={{ padding: '1rem', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', textAlign: 'center', marginTop: '1rem', color: 'var(--text-main)' }}>
+                            {status}
+                        </div>
+                    )}
                 </form>
             </div>
 
