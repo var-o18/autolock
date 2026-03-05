@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     const data = await resend.emails.send({
       // Resend usa onboarding@resend.dev por defecto para pruebas. 
       // Después cambiarlo a 'tu-dominio <info@tu-dominio.com>'
-      from: 'Frontend Form <info@autolock.es>', 
+      from: 'onboarding@resend.dev', 
       to: 'alvaroforte13@gmail.com', // <-- CAMBIAR POR TU CORREO PERSONAL / EMPRESA
       subject: `Nuevo mensaje de ${nombre} desde la Web`,
       html: `
