@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend('re_P4CPthFK_ArKTcJR3EEyT5k3pzoJj8tTu');
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ message: "Método no permitido" });
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       // Resend usa onboarding@resend.dev por defecto para pruebas. 
       // Después cambiarlo a 'tu-dominio <info@tu-dominio.com>'
       from: 'onboarding@resend.dev', 
-      to: 'alvaroforte13@gmail.com', // <-- CAMBIAR POR TU CORREO PERSONAL / EMPRESA
+      to: 'oficina.djvaro@gmail.com', // <-- Puesto correo de destino
       subject: `Nuevo mensaje de ${nombre} desde la Web`,
       html: `
         <h2>Nuevo mensaje de contacto</h2>
