@@ -12,6 +12,12 @@
     /* Parallax effect */
 }
 
+@media (max-width: 1024px) {
+    .hero {
+        background-attachment: scroll; /* Fixes visibility issue on mobile/tablets */
+    }
+}
+
 .hero-content {
     max-width: 800px;
 }
