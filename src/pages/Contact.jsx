@@ -109,56 +109,59 @@ const Contact = () => {
             </div>
 
             <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-                <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    {/* HONEYPOT ANTI-SPAM */}
+                    <input type="text" name="botcheck" style={{ display: 'none' }} />
+                    
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                         <div>
                             <label style={labelStyle}>{t.contact.form1.firstName}</label>
-                            <input type="text" style={inputStyle} />
+                            <input type="text" name="nombre" style={inputStyle} />
                         </div>
                         <div>
                             <label style={labelStyle}>{t.contact.form1.lastName}</label>
-                            <input type="text" style={inputStyle} />
+                            <input type="text" name="apellido" style={inputStyle} />
                         </div>
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form1.phone} *</label>
-                        <input type="tel" style={inputStyle} required />
+                        <input type="tel" name="telefono" style={inputStyle} required />
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form2.date}</label>
-                        <input type="date" style={inputStyle} />
+                        <input type="date" name="fecha" style={inputStyle} />
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                         <div>
                             <label style={labelStyle}>{t.contact.form2.timeFrom}</label>
-                            <input type="time" style={inputStyle} />
+                            <input type="time" name="hora_desde" style={inputStyle} />
                         </div>
                         <div>
                             <label style={labelStyle}>{t.contact.form2.timeTo}</label>
-                            <input type="time" style={inputStyle} />
+                            <input type="time" name="hora_hasta" style={inputStyle} />
                         </div>
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form1.email} *</label>
-                        <input type="email" style={inputStyle} />
+                        <input type="email" name="email" style={inputStyle} required />
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form2.subject}</label>
-                        <input type="text" style={inputStyle} />
+                        <input type="text" name="asunto" style={inputStyle} />
                     </div>
 
                     <div>
                         <label style={labelStyle}>{t.contact.form1.message}</label>
-                        <textarea rows="5" style={inputStyle}></textarea>
+                        <textarea name="mensaje" rows="5" style={inputStyle}></textarea>
                     </div>
 
                     <div style={{ textAlign: 'right' }}>
-                        <button className="btn btn-primary">{t.contact.form2.submit}</button>
+                        <button type="submit" className="btn btn-primary">{t.contact.form2.submit}</button>
                     </div>
                 </form>
             </div>
