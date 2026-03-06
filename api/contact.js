@@ -245,20 +245,36 @@ export default async function handler(req, res) {
     });
 
     // ENVÍO AL CLIENTE (DINÁMICO)
-    // El 'to: email' asegura que llegue a quien rellenó el formulario.
     let clientMail = null;
+    let clientError = null;
+    
     try {
-      clientMail = await resend.emails.send({
-        from: 'Autolock <onboarding@resend.dev>',
-        to: email, // <--- DINÁMICO
+      // NOTA IMPORTANTE: Resend bloquea envíos a destinatarios externos si el domino no está verificado.
+      // Solo permitirá enviar a 'oficina.djvaro@gmail.com' hasta que añadas tu dominio.
+      const { data, error } = await resend.emails.send({
+        from: 'Autolock <onboarding@resend.dev>', // <--- Cambiar por "info@tu-dominio.es" tras verificar
+        to: [email], 
         subject: `Confirmación de contacto - Autolock`,
         html: userHtml,
       });
+      
+      if (error) {
+        clientError = error.message;
+        console.warn("Resend devolvió un error para el cliente:", error);
+      } else {
+        clientMail = data;
+      }
     } catch (e) {
-      console.warn("No se envió el correo al cliente (posiblemente falta verificar dominio):", e);
+      clientError = e.message;
+      console.warn("Excepción al enviar email al cliente:", e);
     }
 
-    res.status(200).json({ success: true, admin: adminMail, user: clientMail });
+    res.status(200).json({ 
+      success: true, 
+      admin: adminMail, 
+      user: clientMail,
+      userError: clientError // Esto te dirá por qué no llega al cliente
+    });
   } catch (error) {
     console.error("Error crítico en el servicio de contacto:", error);
     res.status(500).json({ success: false, error: error.message });
