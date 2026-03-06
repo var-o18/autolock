@@ -1,4 +1,4 @@
-import { ArrowRight, Facebook } from 'lucide-react';
+import { ArrowRight, Facebook, Instagram } from 'lucide-react';
 import posts from '../data/facebookPosts.json';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -14,7 +14,7 @@ const RecentWork = () => {
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '0.5rem 1rem', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                        <Facebook size={16} /> FACEBOOK FEED
+                         SOCIAL FEED
                     </div>
                     <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '1rem', background: 'linear-gradient(to right, #fff, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                         {title}
@@ -79,9 +79,12 @@ const RecentWork = () => {
                     ))}
                 </div>
 
-                <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-                    <a href="https://www.facebook.com/autolock/" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', borderRadius: '3rem', boxShadow: '0 10px 20px rgba(239, 68, 68, 0.2)' }}>
-                        <Facebook size={20} style={{ marginRight: '0.5rem' }} /> {language === 'es' ? 'Síguenos en Facebook' : 'Follow us on Facebook'}
+                <div style={{ textAlign: 'center', marginTop: '4rem', display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    <a href="https://www.facebook.com/autolock/?locale=es_ES" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', borderRadius: '3rem', boxShadow: '0 10px 20px rgba(239, 68, 68, 0.2)', display: 'inline-flex', alignItems: 'center' }}>
+                        <Facebook size={20} style={{ marginRight: '0.5rem' }} /> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/autolock.es/" target="_blank" rel="noopener noreferrer" className="btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', borderRadius: '3rem', border: '2px solid #ef4444', color: '#ef4444', background: 'transparent', display: 'inline-flex', alignItems: 'center' }}>
+                        <Instagram size={20} style={{ marginRight: '0.5rem' }} /> Instagram
                     </a>
                 </div>
             </div>

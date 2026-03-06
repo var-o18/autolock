@@ -42,7 +42,9 @@ export const translations = {
         },
         coverage: {
             title: "Zona de Cobertura",
-            desc: "Operamos principalmente en la Costa Blanca Norte y Sur."
+            desc: "Operamos principalmente en la Costa Blanca, desplazándonos hasta tu ubicación para mayor comodidad.",
+            extra: "Nos desplazamos donde el cliente se encuentre, incluso fuera de las zonas señaladas. ¡Consulta disponibilidad!",
+            cities: ['Alicante', 'Benidorm', 'Torrevieja', 'Elche', 'Santa Pola', 'Orihuela Costa', 'Guardamar', 'Altea', 'Calpe']
         },
         gallery: {
             title: "Trabajos Recientes",
@@ -131,6 +133,25 @@ export const translations = {
                 { title: "Llaves dentro del coche", desc: "Si dejaste las llaves dentro y no tienes copia, somos expertos en apertura técnica (ganzuado) sin causar ningún daño al vehículo." },
                 { title: "Reparación de Cerraduras", desc: "Podemos ayudar con cualquier mecanismo de cerradura dañado, bloqueado o si la llave no gira en el contacto." }
             ]
+        },
+        cookies: {
+            title: "Configuración de Cookies",
+            intro: "Este sitio web utiliza cookies para ofrecer a los visitantes una experiencia de usuario óptima. Cierto contenido de terceros solo se muestra si el 'Contenido de Terceros' está habilitado.",
+            technically: {
+                title: "Técnicamente necesarias",
+                desc: "Estas cookies son necesarias para el funcionamiento del sitio web, por ejemplo, para protegerlo contra ataques de piratas informáticos y para garantizar una apariencia constante y orientada a la demanda del sitio."
+            },
+            analytical: {
+                title: "Analíticas",
+                desc: "Estas cookies se utilizan para optimizar aún más la experiencia del usuario. Esto incluye estadísticas proporcionadas al operador del sitio web por terceros y la visualización de publicidad personalizada mediante el seguimiento de la actividad del usuario en diferentes sitios web."
+            },
+            thirdParty: {
+                title: "Contenido de terceros",
+                desc: "Este sitio web puede ofrecer contenido o funcionalidad proporcionada por terceros bajo su propia responsabilidad. Estos terceros pueden establecer sus propias cookies, por ejemplo, para rastrear la actividad del usuario o para personalizar y optimizar sus ofertas."
+            },
+            btnReject: "RECHAZAR",
+            btnAccept: "ACEPTAR TODO",
+            btnSave: "GUARDAR"
         }
     },
     en: {
@@ -172,7 +193,9 @@ export const translations = {
         },
         coverage: {
             title: "Coverage Area",
-            desc: "We operate mainly in Costa Blanca North and South."
+            desc: "We operate mainly in the Costa Blanca area, traveling to your location for maximum convenience.",
+            extra: "We can travel to wherever the client is located, even outside the specified zones. Ask for availability!",
+            cities: ['Alicante', 'Benidorm', 'Torrevieja', 'Elche', 'Santa Pola', 'Orihuela Costa', 'Guardamar', 'Altea', 'Calpe']
         },
         gallery: {
             title: "Recent Work",
@@ -261,6 +284,25 @@ export const translations = {
                 { title: "Locked Keys in Car", desc: "If you have accidentally locked your keys in your car and don't have a duplicate then don't worry. We are experts at vehicle lock picking and gaining entry without damage." },
                 { title: "Lock Repairs", desc: "Our Auto Locksmith can help with any Car Lock mechanism problems such as damaged and broken car lock, if the lock is jammed and won't open or car key is jammed in ignition." }
             ]
+        },
+        cookies: {
+            title: "Cookie Settings",
+            intro: "This website uses cookies to provide visitors with an optimal user experience. Certain third party content is only displayed if 'Third Party Content' is enabled.",
+            technically: {
+                title: "Technically necessary",
+                desc: "These cookies are necessary for the operation of the website, e.g. to protect it against hacker attacks and to ensure a consistent and demand-oriented appearance of the site."
+            },
+            analytical: {
+                title: "Analytical",
+                desc: "These cookies are used to further optimize the user experience. This includes statistics provided to the website operator by third parties and the display of personalised advertising by tracking user activity across different websites."
+            },
+            thirdParty: {
+                title: "Third Party Content",
+                desc: "This website may offer content or functionality that is provided by third parties on their own responsibility. These third parties may set their own cookies, e.g. to track user activity or to personalize and optimize their offers."
+            },
+            btnReject: "REJECT",
+            btnAccept: "ACCEPT ALL",
+            btnSave: "SAVE"
         }
     }
 };

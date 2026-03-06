@@ -34,10 +34,30 @@ const ECURemap = () => {
                 </div>
 
                 <div style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <img src="/images/bvan watermark.png" alt="ECU Work" style={{ width: '100%', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }} />
-                    {/* Using existing internal pic if possible, else generic */}
-                    <div style={{ width: '100%', height: '300px', backgroundColor: '#e5e7eb', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ color: '#9ca3af' }}>ECU Circuit Board Image</span>
+                    <div style={{ position: 'relative' }}>
+                        <img 
+                            src="/images/IMG_0251.jfif" 
+                            alt="ECU Programming Work" 
+                            style={{ width: '100%', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', transition: 'transform 0.3s ease' }} 
+                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        />
+                        <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem' }}>
+                            ECU Bench Work
+                        </div>
+                    </div>
+                    
+                    <div style={{ position: 'relative' }}>
+                        <img 
+                            src="/images/picture-200 (3).jfif" 
+                            alt="ECU Connection Details" 
+                            style={{ width: '100%', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', transition: 'transform 0.3s ease' }} 
+                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        />
+                        <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem' }}>
+                            Advanced Pinout
+                        </div>
                     </div>
                 </div>
             </div>

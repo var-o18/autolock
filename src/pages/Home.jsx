@@ -154,24 +154,72 @@ const Home = () => {
             <RecentWork />
 
             {/* Coverage & Map */}
-            <section className="section">
+            <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
                 <div className="container">
-                    <div className="flex-between" style={{ flexWrap: 'wrap', gap: '3rem' }}>
-                        <div style={{ flex: '1 1 400px' }}>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1rem' }}>{t.coverage.title}</h2>
-                            <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>{t.coverage.desc}</p>
+                    <div style={{ 
+                        display: 'grid', 
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+                        gap: '4rem', 
+                        alignItems: 'center' 
+                    }}>
+                        <div>
+                            <span style={{ color: 'var(--primary-red)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
+                                {t.hero.subtitle}
+                            </span>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '1.5rem', marginTop: '0.5rem' }}>{t.coverage.title}</h2>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.7' }}>
+                                {t.coverage.desc}
+                            </p>
 
-                            <div className="coverage-list">
-                                {['Alicante', 'Benidorm', 'Torrevieja', 'Elche', 'Santa Pola', 'Orihuela Costa', 'Guardamar', 'Altea', 'Calpe'].map(city => (
-                                    <span key={city} className="city-tag" style={{ border: '1px solid var(--border-color)' }}>{city}</span>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '2.5rem' }}>
+                                {t.coverage.cities.map(city => (
+                                    <span key={city} style={{ 
+                                        padding: '6px 14px', 
+                                        background: 'var(--bg-card)', 
+                                        borderRadius: '20px', 
+                                        fontSize: '0.9rem', 
+                                        border: '1px solid var(--border-color)',
+                                        color: 'var(--text-main)'
+                                    }}>
+                                        {city}
+                                    </span>
                                 ))}
                             </div>
-                        </div>
-                        <div style={{ flex: '1 1 400px', minHeight: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <MapPin size={48} className="text-primary" />
-                                <p style={{ marginTop: '1rem', color: 'var(--text-main)' }}>Servicio Móvil en toda la provincia</p>
+
+                            <div style={{ 
+                                padding: '1.5rem', 
+                                background: 'rgba(239, 68, 68, 0.05)', 
+                                borderRadius: '1rem', 
+                                borderLeft: '4px solid var(--primary-red)',
+                                display: 'flex',
+                                gap: '1rem',
+                                alignItems: 'flex-start'
+                            }}>
+                                <Zap size={24} color="var(--primary-red)" style={{ marginTop: '4px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: '1.05rem', color: 'var(--text-main)', fontWeight: '500' }}>
+                                    {t.coverage.extra}
+                                </p>
                             </div>
+                        </div>
+
+                        <div style={{ 
+                            height: '450px', 
+                            borderRadius: '1.5rem', 
+                            overflow: 'hidden', 
+                            boxShadow: 'var(--shadow-xl)',
+                            border: '1px solid var(--border-color)',
+                            position: 'relative'
+                        }}>
+                            <iframe
+                                src="https://maps.google.com/maps?q=Alicante,Spain&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Autolock Coverage Area"
+                            ></iframe>
                         </div>
                     </div>
                 </div>

@@ -22,10 +22,22 @@ const About = () => {
                     </div>
                 </div>
 
-                <div style={{ flex: '1 1 300px', minWidth: '280px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <img src="/images/bvan watermark.png" alt="Van Interior" style={{ width: '100%', height: 'auto', borderRadius: '0.5rem', boxShadow: 'var(--shadow-md)' }} />
-                    <img src="/images/front side.jpg" alt="Van Exterior" style={{ width: '100%', height: 'auto', borderRadius: '0.5rem', boxShadow: 'var(--shadow-md)' }} />
-                </div>
+                <div style={{ flex: '1 1 300px', minWidth: '280px', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ position: 'relative', width: '100%' }}>
+                        <img 
+                            src="/images/front-side.jpg" 
+                            alt="Furgoneta Taller Autolock" 
+                            style={{ 
+                                width: '100%', 
+                                height: 'auto', 
+                                borderRadius: 'var(--radius-md)', 
+                                boxShadow: 'var(--shadow-xl)',
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }} 
+                        />
+                        
+                        </div>
+                    </div>
             </div>
         </div>
     );

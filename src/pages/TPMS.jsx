@@ -36,10 +36,7 @@ const TPMS = () => {
                     <p style={{ color: 'var(--text-muted)', lineHeight: '1.8' }}>{t.tpms.section2.text}</p>
                 </div>
                 <div style={{ flex: '1 1 300px', minWidth: '280px' }}>
-                    {/* Placeholder for dash warning image 2 */}
-                    <div style={{ width: '100%', height: '250px', backgroundColor: '#e5e7eb', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ color: '#9ca3af' }}>Dashboard Warning Detail</span>
-                    </div>
+                    <img src="/images/IMG_0251.jfif" alt="TPMS Technical Work" style={{ width: '100%', borderRadius: '0.5rem', boxShadow: 'var(--shadow-md)' }} />
                 </div>
             </div>
 

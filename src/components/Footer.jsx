@@ -10,15 +10,37 @@ const Footer = () => {
 
                     {/* Brand */}
                     <div>
-                        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                            <span className="text-primary">Auto</span>Lock
-                        </h2>
-                        <p style={{ color: '#9CA3AF', marginBottom: '1.5rem' }}>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <img 
+                                src="/images/picture-1200.png" 
+                                alt="AutoLock Logo" 
+                                style={{ height: '55px', width: 'auto', display: 'block' }} 
+                            />
+                        </div>
+                        <p style={{ color: '#9CA3AF', marginBottom: '1.5rem', fontSize: '1.05rem', lineHeight: '1.6' }}>
                             Servicio líder de cerrajería de automoción en Costa Blanca. Rápido, profesional y directamente en su ubicación.
                         </p>
-                        <div style={{ display: 'flex', gap: '1rem' }}>
-                            <a href="#" style={{ color: 'white' }}><Facebook size={24} /></a>
-                            <a href="#" style={{ color: 'white' }}><Instagram size={24} /></a>
+                        <div style={{ display: 'flex', gap: '1.2rem' }}>
+                            <a 
+                                href="https://www.facebook.com/autolock/?locale=es_ES" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                style={{ color: 'white', transition: 'color 0.3s ease' }}
+                                onMouseOver={(e) => e.currentTarget.style.color = 'var(--primary-red)'}
+                                onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                            >
+                                <Facebook size={24} />
+                            </a>
+                            <a 
+                                href="https://www.instagram.com/autolock.es/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                style={{ color: 'white', transition: 'color 0.3s ease' }}
+                                onMouseOver={(e) => e.currentTarget.style.color = 'var(--primary-red)'}
+                                onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                            >
+                                <Instagram size={24} />
+                            </a>
                         </div>
                     </div>
 
