@@ -17,18 +17,20 @@ export default async function handler(req, res) {
     return res.status(500).json({ success: false, error: "Faltan credenciales en Vercel." });
   }
 
-  // 3. Configuración Arsys (SMTP) - Puerto 465 (SSL) es el estándar seguro para Arsys
+  // 3. Configuración Arsys (SMTP) - Puerto 587 con TLS es lo que Arsys prefiere para clientes modernos
   const transporter = nodemailer.createTransport({
     host: "smtp.arsys.es",
-    port: 465,
-    secure: true, 
+    port: 587,
+    secure: false, // false para puerto 587
+    requireTLS: true, // Forzamos el uso de TLS
     auth: {
       user: emailUser,
       pass: emailPass,
     },
     tls: {
-      // Configuraciones para máxima compatibilidad con servidores antiguos y modernos
-      rejectUnauthorized: false
+      // Configuraciones de compatibilidad
+      rejectUnauthorized: false,
+      minVersion: "TLSv1.2"
     }
   });
 
