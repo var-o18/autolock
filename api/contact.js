@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
   // 3. Configuración Arsys (SMTP) - Puerto 587 con TLS es lo que Arsys prefiere para clientes modernos
   const transporter = nodemailer.createTransport({
-    host: "smtp.arsys.es",
+    host: "smtp.serviciodecorreo.es",
     port: 587,
     secure: false, // false para puerto 587
     requireTLS: true, // Forzamos el uso de TLS
