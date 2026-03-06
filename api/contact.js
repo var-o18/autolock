@@ -5,7 +5,16 @@ export default async function handler(req, res) {
 
   const { nombre, apellido, email, telefono, mensaje, botcheck, fecha, hora_desde, hora_hasta, asunto } = req.body;
 
-  // 1. HONEYPOT ANTI-SPAM
+  // 1. Validar que tenemos las credenciales configuradas
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error("ERROR: Faltan las variables de entorno EMAIL_USER o EMAIL_PASS en Vercel.");
+    return res.status(500).json({ 
+      success: false, 
+      error: "Error de configuración en el servidor (faltan credenciales)." 
+    });
+  }
+
+  // 2. HONEYPOT ANTI-SPAM
   if (botcheck) {
     return res.status(200).json({ success: true, message: "OK" });
   }
@@ -18,19 +27,35 @@ export default async function handler(req, res) {
   // 3. CONFIGURACIÓN TRANSPORTE ARSYS (SMTP)
   const transporter = nodemailer.createTransport({
     host: "smtp.arsys.es",
-    port: 465,
-    secure: true, 
+    port: 587,
+    secure: false, // false para puerto 587 (usa STARTTLS)
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    tls: {
+      rejectUnauthorized: false // Evita fallos por certificados en servidores cloud
+    }
   });
 
   try {
+    // Verificar conexión antes de enviar (para diagnóstico)
+    try {
+      await transporter.verify();
+    } catch (verifyError) {
+      console.error("Fallo de verificación SMTP:", verifyError);
+      return res.status(500).json({ 
+        success: false, 
+        error: "No se pudo conectar con el servidor de Arsys. Revisa usuario/contraseña.",
+        details: verifyError.message 
+      });
+    }
+
     const protocol = req.headers['x-forwarded-proto'] || 'https';
     const host = req.headers.host;
     const logoUrl = `${protocol}://${host}/images/picture-1200.png`;
     const currentYear = new Date().getFullYear();
+    // ... rest of the code remains high quality
 
     const baseTemplate = (title, bodyContent) => `
       <!DOCTYPE html>
