@@ -12,23 +12,27 @@ export default async function handler(req, res) {
 
   const { nombre, apellido, email, telefono, mensaje, botcheck, fecha, hora_desde, hora_hasta, asunto } = req.body;
 
-  // 1. Validar variables de entorno
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error("Faltan variables de entorno EMAIL_USER o EMAIL_PASS");
+  // 1. Validar variables de entorno (Soportamos EMAIL_USE por el typo en Vercel)
+  const emailUser = process.env.EMAIL_USER || process.env.EMAIL_USE;
+  const emailPass = process.env.EMAIL_PASS;
+  const emailTo = process.env.EMAIL_TO || "info@autolock.es";
+
+  if (!emailUser || !emailPass) {
+    console.error("Faltan variables de entorno EMAIL_USER/EMAIL_USE o EMAIL_PASS");
     return res.status(500).json({ success: false, error: "Servidor no configurado (faltan claves)." });
   }
 
   // 2. Filtro Anti-Spam (Honeypot)
   if (botcheck) return res.status(200).json({ success: true, message: "OK" });
 
-  // 3. Configuración Arsys (SMTP) - Usamos puerto 587 que es más fiable en Vercel
+  // 3. Configuración Arsys (SMTP)
   const transporter = nodemailer.createTransport({
     host: "smtp.arsys.es",
     port: 587,
     secure: false, 
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: emailUser,
+      pass: emailPass,
     },
     tls: {
       rejectUnauthorized: false
@@ -101,8 +105,8 @@ export default async function handler(req, res) {
 
     // 1. Enviar a ADMIN
     await transporter.sendMail({
-      from: `"Web Autolock" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO || "info@autolock.es",
+      from: `"Web Autolock" <${emailUser}>`,
+      to: emailTo,
       subject: `🚨 [WEB] Solicitud de ${nombre}`,
       html: adminHtml,
       replyTo: email
@@ -112,7 +116,7 @@ export default async function handler(req, res) {
     let userSent = false;
     try {
       await transporter.sendMail({
-        from: `"Autolock" <${process.env.EMAIL_USER}>`,
+        from: `"Autolock" <${emailUser}>`,
         to: email, 
         subject: "Confirmación - Autolock",
         html: userHtml
