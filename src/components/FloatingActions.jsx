@@ -1,4 +1,5 @@
 import { Phone, MessageCircle, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './FloatingActions.css';
 
 const FloatingActions = () => {
@@ -21,10 +22,10 @@ const FloatingActions = () => {
                     <Phone size={20} />
                     <span>Llamar</span>
                 </a>
-                <a href="/contact" className="sticky-btn quote-btn">
+                <Link to="/contact" className="sticky-btn quote-btn">
                     <FileText size={20} />
-                    <span>Presupuesto</span>
-                </a>
+                    <span>Contacto</span>
+                </Link>
             </div>
         </>
     );
