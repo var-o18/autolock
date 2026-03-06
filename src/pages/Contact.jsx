@@ -8,7 +8,7 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus(t.contact?.sending || 'Enviando...'); // Fallback message
+        setStatus(t.contact?.sending || 'Enviando...');
         
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData);
@@ -24,10 +24,11 @@ const Contact = () => {
                 setStatus('¡Mensaje enviado con éxito!');
                 e.target.reset();
             } else {
-                setStatus('Hubo un error al enviar el mensaje.');
+                const errData = await response.json();
+                setStatus(`Error: ${errData.error || 'No se pudo enviar'}`);
             }
         } catch (error) {
-            setStatus('Error de red al intentar enviar.');
+            setStatus('Error de conexión. Revisa tu internet.');
         }
     };
 
