@@ -25,11 +25,11 @@ export default async function handler(req, res) {
   // 2. Filtro Anti-Spam (Honeypot)
   if (botcheck) return res.status(200).json({ success: true, message: "OK" });
 
-  // 3. Configuración Arsys (SMTP)
+  // 3. Configuración Arsys (SMTP) - Probamos puerto 465 (SSL) que es el estándar de Arsys
   const transporter = nodemailer.createTransport({
     host: "smtp.arsys.es",
-    port: 587,
-    secure: false, 
+    port: 465,
+    secure: true, // true para puerto 465
     auth: {
       user: emailUser,
       pass: emailPass,
